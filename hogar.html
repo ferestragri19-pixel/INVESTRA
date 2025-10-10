@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hogar Vers&aacute;til | Seguro de Casa Habitaci&oacute;n</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body{background:linear-gradient(180deg,#f1f5fb 0%,#ffffff 58%,#fef8f3 100%)}
+      main{display:flex;flex-direction:column;gap:0}
+      .hero-life{position:relative;overflow:hidden;padding:140px 0 110px;background:linear-gradient(135deg,rgba(37,99,235,.14) 0%,rgba(15,74,92,.06) 40%,rgba(255,255,255,.94) 100%)}
+      .hero-life::before,.hero-life::after{content:"";position:absolute;border-radius:50%;filter:blur(0.6px);opacity:.5;animation:float-slow 18s ease-in-out infinite}
+      .hero-life::before{width:520px;height:520px;background:radial-gradient(circle at center,rgba(37,99,235,.22) 0%,rgba(37,99,235,0) 70%);top:-200px;right:-160px}
+      .hero-life::after{width:420px;height:420px;background:radial-gradient(circle at center,rgba(22,108,125,.18) 0%,rgba(22,108,125,0) 70%);bottom:-160px;left:-140px;animation-delay:-6s}
+      .hero-life__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:48px;align-items:center}
+      .hero-life__copy{display:grid;gap:18px}
+      .hero-pill{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:8px 18px;border-radius:999px;background:rgba(37,99,235,.12);color:var(--teal-800);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.78rem;box-shadow:0 18px 36px rgba(9,51,68,.12)}
+      .hero-life__copy h1{margin:0;font-size:clamp(36px,5vw,56px);color:var(--teal-900);letter-spacing:-.02em}
+      .hero-life__subtitle{margin:0;color:#315361;font-size:1.08rem;max-width:620px}
+      .hero-life__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
+      .hero-life__cta .cta.ghost{backdrop-filter:blur(6px)}
+      .hero-life__highlights{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 0 0;padding:0;list-style:none}
+      .hero-life__highlights li{position:relative;padding:10px 16px 10px 34px;background:#fff;border-radius:18px;border:1px solid rgba(37,99,235,.16);box-shadow:0 14px 32px rgba(9,51,68,.12);font-size:.98rem;color:var(--teal-800);min-height:44px}
+      .hero-life__highlights li::before{content:"";position:absolute;left:14px;top:16px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--orange-500),rgba(37,99,235,.42))}
+      .life-snapshot{position:relative;display:grid;gap:16px;padding:32px;border-radius:28px;border:1px solid rgba(37,99,235,.16);background:rgba(255,255,255,.96);box-shadow:0 26px 58px rgba(9,51,68,.18);overflow:hidden}
+      .life-snapshot::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgba(37,99,235,.22),rgba(255,255,255,0) 60%);opacity:.28;pointer-events:none}
+      .life-snapshot__eyebrow{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+      .life-snapshot__title{margin:0;font-size:1.32rem;color:var(--teal-900)}
+      .life-snapshot p{margin:0;color:#315361}
+      .life-meter{position:relative;height:9px;border-radius:999px;background:rgba(37,99,235,.12);overflow:hidden}
+      .life-meter span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--orange-500) 0%,rgba(37,99,235,.9) 100%);box-shadow:0 10px 24px rgba(37,99,235,.28)}
+      .life-metrics{display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap}
+      .life-metrics div{display:grid;gap:4px;min-width:140px}
+      .life-metrics strong{font-size:1.48rem;color:var(--teal-900)}
+      .life-metrics small{color:var(--muted)}
+      .life-snapshot__footnote{font-size:.78rem;color:var(--muted)}
+      .section{position:relative;padding:88px 0}
+      .section::before{content:"";position:absolute;inset:18px 0;border-radius:40px;background:linear-gradient(135deg,rgba(37,99,235,.05),rgba(15,74,92,.02));opacity:0;transition:opacity .45s ease;z-index:-1}
+      .section:hover::before{opacity:1}
+      .section--highlight{background:linear-gradient(180deg,rgba(232,243,246,.65) 0%,rgba(255,255,255,.92) 100%)}
+      .section h2{margin:0;font-size:clamp(30px,3.4vw,40px);color:var(--teal-900);letter-spacing:-.01em}
+      .section .lead{margin:12px 0 24px 0;color:var(--muted);font-size:1.06rem;max-width:820px}
+      .feature-duo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:56px;align-items:center}
+      .feature-duo__copy{display:grid;gap:18px}
+      .feature-duo__badges{display:flex;flex-wrap:wrap;gap:12px}
+      .feature-duo__badges span{padding:8px 16px;border-radius:18px;background:#fff;border:1px solid rgba(37,99,235,.18);box-shadow:0 12px 28px rgba(9,51,68,.12);font-size:.86rem;font-weight:500;color:var(--teal-800)}
+      .feature-duo__list{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+      .feature-duo__list li{position:relative;padding:20px 22px 20px 26px;border-radius:24px;background:#fff;border:1px solid rgba(37,99,235,.14);box-shadow:0 20px 48px rgba(9,51,68,.12)}
+      .feature-duo__list strong{display:block;font-size:1.04rem;color:var(--teal-800);margin-bottom:6px}
+      .feature-duo__list p{margin:0;color:#315361}
+      .life-benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:20px}
+      .life-benefit-card{position:relative;display:grid;gap:14px;padding:26px;border-radius:26px;background:rgba(255,255,255,.96);border:1px solid rgba(37,99,235,.12);box-shadow:0 24px 52px rgba(9,51,68,.14);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+      .life-benefit-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(140deg,rgba(37,99,235,.16),rgba(37,99,235,0) 60%);opacity:.22;transition:opacity .35s ease}
+      .life-benefit-card:hover{transform:translateY(-10px);box-shadow:0 32px 64px rgba(9,51,68,.22);border-color:rgba(37,99,235,.28)}
+      .life-benefit-card:hover::before{opacity:.32}
+      .life-benefit-icon{position:relative;z-index:1;width:52px;height:52px;border-radius:18px;background:linear-gradient(135deg,rgba(37,99,235,.18),rgba(37,99,235,.04));display:grid;place-items:center;color:var(--orange-500);box-shadow:0 18px 34px rgba(9,51,68,.16)}
+      .life-benefit-card h3{position:relative;z-index:1;margin:0;color:var(--teal-900);font-size:1.12rem}
+      .life-benefit-card p{position:relative;z-index:1;margin:0;color:#315361;font-size:.98rem}
+      .life-benefit-meta{position:relative;z-index:1;font-size:.82rem;color:var(--muted);font-weight:500}
+      .life-timeline{margin-top:28px;display:grid;gap:26px}
+      .life-timeline__item{position:relative;padding-left:64px}
+      .life-timeline__item::before{content:"";position:absolute;left:28px;top:18px;bottom:-28px;width:1px;background:linear-gradient(180deg,rgba(37,99,235,.3),rgba(37,99,235,0))}
+      .life-timeline__item:last-child::before{bottom:14px}
+      .life-timeline__step{position:absolute;left:0;top:6px;width:48px;height:48px;border-radius:18px;background:linear-gradient(135deg,rgba(37,99,235,.16),rgba(15,74,92,.1));display:grid;place-items:center;color:var(--teal-900);font-weight:700;box-shadow:0 16px 32px rgba(9,51,68,.16)}
+      .life-timeline__item h3{margin:0 0 6px 0;color:var(--teal-800);font-size:1.08rem}
+      .life-timeline__item p{margin:0;color:#315361}
+      .life-coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:28px}
+      .life-coverage-card{position:relative;display:grid;gap:10px;padding:26px;border-radius:26px;background:#fff;border:1px solid rgba(37,99,235,.12);box-shadow:0 24px 52px rgba(9,51,68,.14);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+      .life-coverage-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(9,51,68,.2);border-color:rgba(37,99,235,.25)}
+      .life-coverage-icon{width:46px;height:46px;border-radius:16px;background:linear-gradient(135deg,rgba(37,99,235,.18),rgba(37,99,235,.05));display:grid;place-items:center;color:var(--orange-500);box-shadow:0 12px 28px rgba(9,51,68,.14)}
+      .life-coverage-card h3{margin:0;color:var(--teal-900);font-size:1.08rem}
+      .life-coverage-card p{margin:0;color:#315361;font-size:.96rem}
+      .life-coverage-tag{display:inline-flex;align-items:center;gap:6px;width:max-content;padding:6px 12px;border-radius:999px;background:rgba(37,99,235,.12);color:var(--teal-800);font-size:.78rem;font-weight:600}
+      .life-coverage-tag--optional{background:rgba(255,143,0,.14);color:#8a5412}
+      .life-note{margin-top:20px;font-size:.92rem;color:var(--muted);max-width:720px}
+      .life-faq details{border:1px solid rgba(37,99,235,.16);border-radius:22px;padding:20px 22px;background:#fff;box-shadow:0 20px 46px rgba(9,51,68,.12);transition:border-color .3s ease,box-shadow .3s ease}
+      .life-faq details[open]{border-color:rgba(37,99,235,.32);box-shadow:0 26px 60px rgba(9,51,68,.18)}
+      .life-faq summary{cursor:pointer;font-weight:600;color:var(--teal-900);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px}
+      .life-faq summary::-webkit-details-marker{display:none}
+      .life-faq summary::after{content:"+";font-weight:700;color:var(--orange-500);transition:transform .3s ease}
+      .life-faq details[open] summary::after{transform:rotate(45deg)}
+      .life-faq details p{margin:14px 0 0 0;color:#315361}
+      @keyframes float-slow{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-26px,0) scale(1.06)}}
+      @media (max-width: 1120px){
+        .hero-life__grid{grid-template-columns:1fr;gap:38px}
+        .life-snapshot{max-width:420px;justify-self:center}
+      }
+      @media (max-width: 960px){
+        .feature-duo{grid-template-columns:1fr;gap:40px}
+        .feature-duo__list li{padding:20px 22px}
+        .life-timeline__item{padding-left:56px}
+      }
+      @media (max-width: 720px){
+        .hero-life{padding:120px 0 90px}
+        .hero-life__cta{justify-content:center}
+        .life-snapshot{padding:28px}
+        .section{padding:72px 0}
+      }
+      @media (max-width: 640px){
+        .hero-life__highlights li{width:100%}
+        .life-benefit-card{padding:24px}
+        .life-coverage-card{padding:24px}
+        .life-timeline__item{padding-left:52px}
+        .life-timeline__step{width:42px;height:42px;border-radius:16px}
+        .life-timeline__item::before{left:22px}
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html#inicio" aria-label="Investra Asesores">
+          <img class="brand-logo-img" src="images/logo.jpg" alt="Logotipo de INVESTRA Asesores" />
+          <span class="brand-name">INVESTRA Asesores</span>
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+          <ul id="menu" class="menu">
+            <li><a href="index.html#servicios">Servicios</a></li>
+            <li><a href="index.html#mision">Nuestra misión</a></li>
+            <li><a href="index.html#companias">Compañías</a></li>
+            <li><a href="index.html#agente">Agente</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+        <a class="cta cta-small" id="whatsapp-top" href="https://wa.me/528147301627?text=Hola%20me%20gustar%C3%ADa%20una%20cotizaci%C3%B3n" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+          <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="#25D366" d="M20.52 3.48A11.44 11.44 0 0 0 12 .5C5.65.5.5 5.65.5 12c0 2 .52 3.92 1.52 5.63L.5 23.5l6-1.56A11.43 11.43 0 0 0 12 23.5C18.35 23.5 23.5 18.35 23.5 12c0-3.06-1.19-5.94-2.98-8.52ZM12 21.3c-1.78 0-3.5-.47-5.02-1.36l-.36-.21-3.55.92.95-3.44-.22-.36A9.29 9.29 0 0 1 2.7 12C2.7 6.87 6.87 2.7 12 2.7c2.48 0 4.82.97 6.57 2.72A9.25 9.25 0 0 1 21.3 12c0 5.13-4.17 9.3-9.3 9.3Zm5.06-7.48c-.28-.16-1.66-.88-1.92-.98-.26-.1-.44-.16-.63.16-.18.3-.73.98-.9 1.18-.17.2-.32.22-.6.07-.28-.16-1.2-.44-2.28-1.4-.84-.75-1.41-1.68-1.58-1.98-.17-.3-.02-.44.13-.6.13-.13.3-.34.43-.5.15-.17.2-.29.29-.49.09-.2.05-.36-.03-.5-.08-.15-.64-1.56-.88-2.13-.23-.56-.47-.46-.64-.47l-.56-.01c-.19 0-.48.07-.73.36-.25.28-.96.95-.96 2.31s.99 2.69 1.13 2.88c.15.2 1.96 3 4.74 4.21.66.29 1.17.46 1.57.59.66.21 1.26.18 1.73.11.52-.08 1.68-.7 1.92-1.38.24-.68.24-1.25.17-1.38-.08-.13-.3-.22-.59-.37Z"/>
+          </svg>
+          WhatsApp
+        </a>
+      </div>
+    </header>
+    
+
+    <main>
+      <section class="hero-life">
+        <div class="container hero-life__grid">
+          <div class="hero-life__copy">
+            <span class="hero-pill">Seguro de Hogar</span>
+            <h1>Protege tu patrimonio con Hogar Vers&aacute;til</h1>
+            <p class="hero-life__subtitle">Asegura tu casa, departamento o vivienda en fraccionamiento con coberturas flexibles: todo riesgo incendio y contenidos, terremoto y riesgos hidrometeorol&oacute;gicos, rotura de cristales, robo y m&aacute;s.</p>
+            <div class="hero-life__cta">
+              <a class="cta" href="https://wa.me/528147301627?text=quisiera%20saber%20mas%20informacion%20acerca%20de%20Seguro%20Profesional%20(Protecci%C3%B3n%20y%20Educaci%C3%B3n)" target="_blank" rel="noopener">Pedir más información</a>
+              <a class="cta ghost" href="#ventajas">Ver ventajas</a>
+            </div>
+            <ul class="hero-life__highlights">
+              <li>Due&ntilde;o o inquilino; tambi&eacute;n si rentas a un tercero</li>
+              <li>Suma asegurada flexible; hasta 30 mdp*</li>
+              <li>Valuaci&oacute;n real y confiable del inmueble</li>
+            </ul>
+          </div>
+          <aside class="life-snapshot" aria-label="Razones para contratar Hogar Vers&aacute;til">
+            <span class="life-snapshot__eyebrow">Razones para contratar</span>
+            <h2 class="life-snapshot__title">Hogar Vers&aacute;til</h2>
+            <div class="snapshot-stack">
+              <img src="images/hogar-1.png" alt="Razones para contratar Hogar Vers&aacute;til - parte 1" loading="lazy" />
+              <img src="images/hogar-2.png" alt="Razones para contratar Hogar Vers&aacute;til - parte 2" loading="lazy" />
+              <img src="images/hogar-3.png" alt="Razones para contratar Hogar Vers&aacute;til - parte 3" loading="lazy" />
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section--highlight" id="que-es">
+        <div class="container feature-duo">
+          <div class="feature-duo__copy">
+            <h2>&iquest;Qu&eacute; es Hogar Vers&aacute;til?</h2>
+            <p class="lead">Un seguro para casa habitaci&oacute;n que protege tu patrimonio, pertenencias y responsabilidad civil, con coberturas y coaseguros personalizables seg&uacute;n tus necesidades.</p>
+            <div class="feature-duo__badges">
+              <span>Todo riesgo incendio</span>
+              <span>Terremoto y RHM</span>
+              <span>Rotura de cristales</span>
+            </div>
+          </div>
+          <ul class="feature-duo__list" aria-label="Beneficios centrales de Hogar Vers&aacute;til">
+            <li>
+              <strong>Asegura casas y departamentos</strong>
+              <p>Hasta 30 millones de pesos incluyendo cimientos, seg&uacute;n valuaci&oacute;n del inmueble.</p>
+            </li>
+            <li>
+              <strong>Para due&ntilde;o o inquilino</strong>
+              <p>Te protege vivas en tu inmueble o si lo rentas a un tercero.</p>
+            </li>
+            <li>
+              <strong>Coaseguro flexible</strong>
+              <p>Personaliza tu participaci&oacute;n en coberturas como terremoto, riesgos hidrometeorol&oacute;gicos y bienes a la intemperie.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="ventajas">
+        <div class="container stack">
+          <h2>&iquest;Qu&eacute; ventajas me ofrece?</h2>
+          <p class="lead">Coberturas y asistencias pensadas para la seguridad y comodidad de tu hogar.</p>
+          <div class="life-benefits">
+            <article class="life-benefit-card">
+              <span class="life-benefit-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 2"></path>
+                </svg>
+              </span>
+              <h3>Todo riesgo incendio y contenidos</h3>
+              <p>Protecci&oacute;n amplia al inmueble y pertenencias. Sin deducible ni coaseguro en esta cobertura.</p>
+              <span class="life-benefit-meta">Base del plan</span>
+            </article>
+            <article class="life-benefit-card">
+              <span class="life-benefit-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12h16"></path>
+                  <path d="M12 4v16"></path>
+                  <path d="M7 17h3"></path>
+                  <path d="M14 7h3"></path>
+                </svg>
+              </span>
+              <h3>Gastos extraordinarios</h3>
+              <p>Apoyo para alquiler de hospedaje o bodega si tu vivienda es inhabitable.</p>
+              <span class="life-benefit-meta">Tranquilidad ante imprevistos</span>
+            </article>
+            <article class="life-benefit-card">
+              <span class="life-benefit-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v12H4z"></path>
+                  <path d="M8 20h8"></path>
+                  <path d="M12 16v4"></path>
+                </svg>
+              </span>
+              <h3>Robo dentro y fuera de casa</h3>
+              <p>Asegura tus pertenencias dentro del hogar y tambi&eacute;n fuera, adem&aacute;s de bienes a la intemperie.</p>
+              <span class="life-benefit-meta">Protecci&oacute;n integral</span>
+            </article>
+            <article class="life-benefit-card">
+              <span class="life-benefit-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12l4 4 12-12"></path>
+                  <path d="M20 10v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-6"></path>
+                </svg>
+              </span>
+              <h3>Equipos de teletrabajo</h3>
+              <p>Protege laptop, celular y tableta por robo con violencia, variaci&oacute;n de voltaje y descargas.</p>
+              <span class="life-benefit-meta">Trabajo desde casa protegido</span>
+            </article>
+            <article class="life-benefit-card">
+              <span class="life-benefit-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5c-1.657 0-3 1.343-3 3 0 1.08.567 2.027 1.418 2.563A4.998 4.998 0 0 0 7 15v3h10v-3a4.998 4.998 0 0 0-3.418-4.437A2.996 2.996 0 0 0 15 8c0-1.657-1.343-3-3-3z"></path>
+                </svg>
+              </span>
+              <h3>Asistencias para el hogar</h3>
+              <p>Plomero, cerrajero, electricista y vidriero, adem&aacute;s de asistencia legal telef&oacute;nica.</p>
+              <span class="life-benefit-meta">Servicios 24/7</span>
+            </article>
+            <article class="life-benefit-card">
+              <span class="life-benefit-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 19h6"></path>
+                  <path d="M4 15h10"></path>
+                  <path d="M2 11h14"></path>
+                  <path d="M4 7h10"></path>
+                  <path d="M6 3h6"></path>
+                </svg>
+              </span>
+              <h3>Apoyos adicionales</h3>
+              <p>Apoyo por descomposici&oacute;n de alimentos en refrigerador y asistencia veterinaria telef&oacute;nica para mascotas.</p>
+              <span class="life-benefit-meta">Beneficios que suman</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--highlight" id="ruta">
+        <div class="container stack">
+          <h2>&iquest;C&oacute;mo funciona?</h2>
+          <p class="lead">Contrata, personaliza tus coaseguros y usa tus asistencias cuando lo necesites.</p>
+          <div class="life-timeline">
+            <div class="life-timeline__item">
+              <span class="life-timeline__step">1</span>
+              <h3>Cotiza y val&uacute;a tu inmueble</h3>
+              <p>Accede a la p&aacute;gina de Hogar Vers&aacute;til y comparte datos para una valuaci&oacute;n real y confiable.</p>
+            </div>
+            <div class="life-timeline__item">
+              <span class="life-timeline__step">2</span>
+              <h3>Elige coberturas</h3>
+              <p>Todo riesgo incendio y contenidos, terremoto, riesgos hidrometeorol&oacute;gicos, rotura de cristales, robo y m&aacute;s.</p>
+            </div>
+            <div class="life-timeline__item">
+              <span class="life-timeline__step">3</span>
+              <h3>Personaliza coaseguros</h3>
+              <p>Determina tu participaci&oacute;n en siniestros seg&uacute;n tus preferencias y presupuesto.</p>
+            </div>
+            <div class="life-timeline__item">
+              <span class="life-timeline__step">4</span>
+              <h3>Usa tus asistencias y apoyos</h3>
+              <p>Solicita plomero, cerrajero, ambulancia, asesor&iacute;a legal o reembolsos seg&uacute;n tu plan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="coberturas">
+        <div class="container stack">
+          <h2>&iquest;Qu&eacute; cubre?</h2>
+          <p class="lead">Coberturas b&aacute;sicas y adicionales para tu hogar y pertenencias.</p>
+          <div class="life-coverage-grid">
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l7 4v6c0 5-4 7-7 8-3-1-7-3-7-8V7z"></path>
+                </svg>
+              </span>
+              <h3>Todo riesgo incendio y contenidos</h3>
+              <p>Da&ntilde;os al inmueble y pertenencias, gastos extraordinarios y remoci&oacute;n de escombros.</p>
+              <span class="life-coverage-tag">Incluida</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12l5 5L20 7"></path>
+                </svg>
+              </span>
+              <h3>Terremoto y erupci&oacute;n volc&aacute;nica</h3>
+              <p>Protege tu vivienda ante eventos catastr&oacute;ficos. Coaseguro configurable.</p>
+              <span class="life-coverage-tag">Incluida</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12h16"></path>
+                  <path d="M12 5L5 12l7 7"></path>
+                </svg>
+              </span>
+              <h3>Riesgos hidrometeorol&oacute;gicos</h3>
+              <p>Inundaci&oacute;n, hurac&aacute;n y granizo. Coaseguro configurable.</p>
+              <span class="life-coverage-tag">Incluida</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 6v6l4 2"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+              </span>
+              <h3>Rotura de cristales</h3>
+              <p>Reposici&oacute;n e instalaci&oacute;n del bien da&ntilde;ado.</p>
+              <span class="life-coverage-tag">Incluida</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9l6-6 6 6"></path>
+                  <path d="M6 15l6 6 6-6"></path>
+                </svg>
+              </span>
+              <h3>Robo con violencia</h3>
+              <p>Protecci&oacute;n para pertenencias dentro y fuera del hogar.</p>
+              <span class="life-coverage-tag life-coverage-tag--optional">Opcional</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 9l6 6"></path>
+                  <path d="M15 9l-6 6"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+              </span>
+              <h3>Gastos extraordinarios</h3>
+              <p>Alquiler de hospedaje o bodega para pertenencias cuando la vivienda sea inhabitable.</p>
+              <span class="life-coverage-tag life-coverage-tag--optional">Opcional</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21c0-4-3-7-8-7s-8 3-8 7"></path>
+                  <circle cx="12" cy="9" r="4"></circle>
+                </svg>
+              </span>
+              <h3>Cobertura Mujer</h3>
+              <p>Respaldo econ&oacute;mico ante padecimientos del g&eacute;nero, enfermedades graves y complicaciones de embarazo o reci&eacute;n nacido.</p>
+              <span class="life-coverage-tag life-coverage-tag--optional">Opcional</span>
+            </article>
+          </div>
+          <p class="life-note">Las coberturas y l&iacute;mites var&iacute;an por plan. Consulta condiciones, exclusiones y requisitos en la p&aacute;gina de GNP.</p>
+        </div>
+      </section>
+
+      <section class="section life-faq" id="faq">
+        <div class="container stack">
+          <h2>Preguntas frecuentes</h2>
+          <p class="lead">Si tienes dudas adicionales, te apoyamos a elegir el plan ideal para tu hogar.</p>
+          <div class="stack" style="display:grid;gap:18px">
+            <details>
+              <summary>&iquest;Qu&eacute; inmuebles cubre?</summary>
+              <p>Departamentos, casas y viviendas en fraccionamiento. La suma asegurada puede incluir cimientos, seg&uacute;n valuaci&oacute;n y condiciones.</p>
+            </details>
+            <details>
+              <summary>&iquest;Aplica para due&ntilde;o, inquilino o si rento a un tercero?</summary>
+              <p>S&iacute;. Protege tu patrimonio y pertenencias seas due&ntilde;o, inquilino o si rentas el inmueble a un tercero.</p>
+            </details>
+            <details>
+              <summary>&iquest;C&oacute;mo funciona la cobertura de gastos extraordinarios?</summary>
+              <p>Si tu vivienda es inhabitable, puedes contar con una suma para hospedaje temporal o bodega para tus pertenencias, seg&uacute;n el plan contratado.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>INVESTRA Asesores</strong>
+          <p>&copy; <span id="year"></span> Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#servicios">Servicios</a>
+          <a href="index.html#mision">Misi&oacute;n</a>
+          <a href="index.html#contacto">Contacto</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
