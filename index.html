@@ -182,11 +182,9 @@
         <div class="container">
           <h2>Contacto</h2>
           <div class="contact-grid">
-            <form class="contact-form" action="https://formsubmit.co/investramty@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="Contacto sitio INVESTRA" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="index.html?sent=1#contacto" />
+            <form name="contacto" class="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="index.html?sent=1#contacto">
+              <input type="hidden" name="form-name" value="contacto" />
+              <p hidden><label>No llenar <input name="bot-field" /></label></p>
               <label>Nombre
                 <input name="nombre" type="text" required />
               </label>
