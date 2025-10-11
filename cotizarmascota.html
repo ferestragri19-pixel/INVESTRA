@@ -141,11 +141,9 @@
         <div class="container stack">
           <h2>Cotiza Mi Mascota GNP</h2>
           <p class="lead">Completa tus datos y te contactaremos para continuar con tu cotizaci&oacute;n.</p>
-          <form id="form-mascota" class="contact-form" action="https://formsubmit.co/investramty@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="Mi Mascota - INVESTRA" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="cotizarmascota.html?sent=1#cotizar" />
+          <form id="form-mascota" name="cotizar-mascota" class="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="cotizarmascota.html?sent=1#cotizar" novalidate>
+            <input type="hidden" name="form-name" value="cotizar-mascota" />
+            <p hidden><label>No llenar <input name="bot-field" /></label></p>
             <label>
               Nombre(s)
               <input type="text" name="nombres" required placeholder="Ej. Fernanda" />
