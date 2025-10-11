@@ -145,11 +145,9 @@
         <div class="container stack">
           <h2>Cotiza tu seguro de auto</h2>
           <p class="lead">Comp&aacute;rtelos datos del veh&iacute;culo para iniciar tu cotizaci&oacute;n, siguiendo el flujo de Datos del Veh&iacute;culo del cotizador de GNP.</p>
-          <form id="form-auto" class="contact-form" action="https://formsubmit.co/investramty@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="Cotizaci&oacute;n Auto - INVESTRA" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="cotizarauto.html?sent=1#cotizar" />
+          <form id="form-auto" name="cotizar-auto" class="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="cotizarauto.html?sent=1#cotizar" novalidate>
+            <input type="hidden" name="form-name" value="cotizar-auto" />
+            <p hidden><label>No llenar <input name="bot-field" /></label></p>
             <h3 style="margin:0">Datos del veh&iacute;culo</h3>
            <label>
               Tipo de vehículo
@@ -253,3 +251,5 @@
           </form>
         </div>
       </section>
+
+
