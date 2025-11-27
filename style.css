@@ -124,6 +124,14 @@ a,button{transition:transform .25s ease,box-shadow .25s ease,background .25s eas
 .footer-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:rgba(255,255,255,.6);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
 .footer-links a:hover::after{transform:scaleX(1)}
 
+/* Cookie banner */
+.cookie-banner{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);width:min(640px,calc(100% - 32px));display:flex;gap:18px;align-items:center;padding:18px 22px;background:rgba(255,255,255,.97);border:1px solid rgba(37,99,235,.15);border-radius:24px;box-shadow:0 26px 60px rgba(9,51,68,.2);z-index:200}
+.cookie-banner p{margin:0}
+.cookie-banner-title{font-weight:600;color:var(--teal-900)}
+.cookie-banner-text{margin-top:6px;color:var(--muted);font-size:.92rem}
+.cookie-banner-accept{flex-shrink:0;padding:10px 22px}
+
+
 /* Responsive */
 @media (max-width: 1024px){
   .hero-inner{padding:48px 32px}
@@ -155,4 +163,5 @@ a,button{transition:transform .25s ease,box-shadow .25s ease,background .25s eas
   .card-actions{flex-direction:column}
   .card-actions .btn{width:100%}
 }
+
 
