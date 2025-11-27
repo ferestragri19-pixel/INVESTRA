@@ -26,3 +26,30 @@
     }
   }catch(e){ /* no-op */ }
 })();
+
+// Cookie banner
+  const cookieBanner = document.querySelector('.cookie-banner');
+  const cookieBtn = document.getElementById('cookie-accept');
+  const cookieKey = 'investraCookieConsent';
+  if(cookieBanner && cookieBtn){
+    let consent = false;
+    try{
+      consent = localStorage.getItem(cookieKey) === 'true';
+    }catch(e){
+      consent = document.cookie.includes(cookieKey + '=true');
+    }
+    if(consent){
+      cookieBanner.remove();
+    }else{
+      cookieBanner.removeAttribute('hidden');
+      cookieBtn.addEventListener('click', ()=>{
+        cookieBanner.setAttribute('hidden','');
+        try{
+          localStorage.setItem(cookieKey,'true');
+        }catch(e){
+          document.cookie = cookieKey + '=true;path=/;max-age=31536000';
+        }
+      });
+    }
+  }
+})();
