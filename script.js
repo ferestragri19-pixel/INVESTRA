@@ -27,7 +27,7 @@
   }catch(e){ /* no-op */ }
 })();
 
-  // Cookie banner
+ // Cookie banner
   const cookieBanner = document.querySelector('.cookie-banner');
   const cookieBtn = document.getElementById('cookie-accept');
   const cookieKey = 'investraCookieConsent';
@@ -42,9 +42,10 @@
     if(consent){
       cookieBanner.remove();
     }else{
-      cookieBanner.removeAttribute('hidden');
+      cookieBanner.hidden = false;
       cookieBtn.addEventListener('click', ()=>{
-        cookieBanner.setAttribute('hidden','');
+        cookieBanner.hidden = true;
+        cookieBanner.style.display = 'none';
         try{
           localStorage.setItem(cookieKey,cookieValue);
         }catch(e){
@@ -54,4 +55,3 @@
     }
   }
 })();
-
