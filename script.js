@@ -29,29 +29,37 @@
 
  // Cookie banner
   const cookieBanner = document.querySelector('.cookie-banner');
-  const cookieBtn = document.getElementById('cookie-accept');
   const cookieKey = 'investraCookieConsent';
   const cookieValue = 'accepted';
-  if(cookieBanner && cookieBtn){
+  if(cookieBanner){
     let consent = false;
     try{
       consent = localStorage.getItem(cookieKey) === cookieValue;
     }catch(e){
       consent = document.cookie.includes(cookieKey + '=' + cookieValue);
     }
+    const hideBanner = ()=>{
+      cookieBanner.classList.add('cookie-banner-hidden');
+      cookieBanner.setAttribute('aria-hidden','true');
+      setTimeout(()=>cookieBanner.remove(),300);
+    };
     if(consent){
-      cookieBanner.remove();
+      hideBanner();
     }else{
-      cookieBanner.hidden = false;
-      cookieBtn.addEventListener('click', ()=>{
-        cookieBanner.hidden = true;
-        cookieBanner.style.display = 'none';
+      cookieBanner.removeAttribute('hidden');
+      const clickHandler = (event)=>{
+        const button = event.target.closest('#cookie-accept');
+        if(!button) return;
+        event.preventDefault();
+        hideBanner();
         try{
           localStorage.setItem(cookieKey,cookieValue);
         }catch(e){
           document.cookie = cookieKey + '=' + cookieValue + ';path=/;max-age=31536000';
         }
-      });
+        document.removeEventListener('click', clickHandler);
+      };
+      document.addEventListener('click', clickHandler);
     }
   }
 })();
