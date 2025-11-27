@@ -27,16 +27,17 @@
   }catch(e){ /* no-op */ }
 })();
 
-// Cookie banner
+  // Cookie banner
   const cookieBanner = document.querySelector('.cookie-banner');
   const cookieBtn = document.getElementById('cookie-accept');
   const cookieKey = 'investraCookieConsent';
+  const cookieValue = 'accepted';
   if(cookieBanner && cookieBtn){
     let consent = false;
     try{
-      consent = localStorage.getItem(cookieKey) === 'true';
+      consent = localStorage.getItem(cookieKey) === cookieValue;
     }catch(e){
-      consent = document.cookie.includes(cookieKey + '=true');
+      consent = document.cookie.includes(cookieKey + '=' + cookieValue);
     }
     if(consent){
       cookieBanner.remove();
@@ -45,11 +46,12 @@
       cookieBtn.addEventListener('click', ()=>{
         cookieBanner.setAttribute('hidden','');
         try{
-          localStorage.setItem(cookieKey,'true');
+          localStorage.setItem(cookieKey,cookieValue);
         }catch(e){
-          document.cookie = cookieKey + '=true;path=/;max-age=31536000';
+          document.cookie = cookieKey + '=' + cookieValue + ';path=/;max-age=31536000';
         }
       });
     }
   }
 })();
+
