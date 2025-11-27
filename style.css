@@ -158,6 +158,46 @@ a,button{transition:transform .25s ease,box-shadow .25s ease,background .25s eas
   .card-actions .btn{width:100%}
 }
 
+/*cookies*/
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  color: #222;
+  font-size: 14px;
+  text-align: center;
+  padding: 15px 20px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+}
+
+.cookie-banner p {
+  margin: 0;
+}
+
+.cookie-banner .btn {
+  border-radius: 5px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background: #000;
+  color: #fff;
+  border: none;
+}
+
+.cookie-banner .btn:hover {
+  opacity: 0.85;
+}
+
+
 
 
 
