@@ -248,15 +248,32 @@
       </div>
     </footer>
 
- <!-- Aceptar cookies -->
+  <!-- Aceptar cookies -->
   <div id="cookie-banner" class="cookie-banner">
   <p>Al navegar por este sitio <strong>aceptas el uso de cookies</strong> para agilizar tu experiencia.</p>
   <button id="accept-cookies" class="btn">Entendido</button>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies');
+
+  if (localStorage.getItem('cookiesAccepted') === 'true') {
+    banner.style.display = 'none';
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    banner.style.display = 'none';
+  });
+});
+</script>
+
     <script src="script.js"></script>
   </body>
   </html>
+
 
 
 
