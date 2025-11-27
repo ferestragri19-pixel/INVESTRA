@@ -9,19 +9,23 @@
     <style>
       body{background:linear-gradient(180deg,#f1f5fb 0%,#ffffff 58%,#fef8f3 100%)}
       main{display:flex;flex-direction:column;gap:0}
-      .hero-life{position:relative;overflow:hidden;padding:140px 0 110px;background:linear-gradient(135deg,rgba(37,99,235,.14) 0%,rgba(15,74,92,.06) 40%,rgba(255,255,255,.94) 100%)}
-      .hero-life::before,.hero-life::after{content:"";position:absolute;border-radius:50%;filter:blur(0.6px);opacity:.5;animation:float-slow 18s ease-in-out infinite}
-      .hero-life::before{width:520px;height:520px;background:radial-gradient(circle at center,rgba(37,99,235,.22) 0%,rgba(37,99,235,0) 70%);top:-200px;right:-160px}
-      .hero-life::after{width:420px;height:420px;background:radial-gradient(circle at center,rgba(22,108,125,.18) 0%,rgba(22,108,125,0) 70%);bottom:-160px;left:-140px;animation-delay:-6s}
+      .hero-life{position:relative;overflow:hidden;padding:140px 0 110px;background:url("salud.png") center/cover no-repeat}
+      .hero-life::before{content:"";position:absolute;inset:0;background:
+        linear-gradient(115deg,rgba(6,20,37,.92) 0%,rgba(8,63,107,.68) 55%,rgba(255,255,255,.9) 100%),
+        radial-gradient(circle at 85% -10%,rgba(37,99,235,.25),rgba(37,99,235,0) 70%),
+        radial-gradient(circle at 5% 110%,rgba(22,108,125,.25),rgba(22,108,125,0) 70%);
+      z-index:0}
       .hero-life__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:48px;align-items:center}
-      .hero-life__copy{display:grid;gap:18px}
-      .hero-pill{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:8px 18px;border-radius:999px;background:rgba(37,99,235,.12);color:var(--teal-800);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.78rem;box-shadow:0 18px 36px rgba(9,51,68,.12)}
-      .hero-life__copy h1{margin:0;font-size:clamp(36px,5vw,56px);color:var(--teal-900);letter-spacing:-.02em}
-      .hero-life__subtitle{margin:0;color:#315361;font-size:1.08rem;max-width:620px}
+      .hero-life__copy{display:grid;gap:18px;color:#e3eef4;text-shadow:0 6px 18px rgba(0,0,0,.35)}
+      .hero-pill{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,.16);color:#e8f3ff;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;box-shadow:0 18px 36px rgba(3,10,18,.45)}
+      .hero-life__copy h1{margin:0;font-size:clamp(36px,5vw,56px);color:#fff;letter-spacing:-.02em}
+      .hero-life__subtitle{margin:0;color:#dbe6f0;font-size:1.1rem;max-width:620px}
       .hero-life__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
-      .hero-life__cta .cta.ghost{backdrop-filter:blur(6px)}
+      .hero-life__cta .cta{box-shadow:0 24px 50px rgba(6,20,37,.3)}
+      .hero-life__cta .cta.ghost{backdrop-filter:blur(6px);border-color:rgba(255,255,255,.7);color:#fff}
+      .hero-life__cta .cta.ghost:hover{background:#fff;color:var(--orange-500)}
       .hero-life__highlights{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 0 0;padding:0;list-style:none}
-      .hero-life__highlights li{position:relative;padding:10px 16px 10px 34px;background:#fff;border-radius:18px;border:1px solid rgba(37,99,235,.16);box-shadow:0 14px 32px rgba(9,51,68,.12);font-size:.98rem;color:var(--teal-800);min-height:44px}
+      .hero-life__highlights li{position:relative;padding:10px 16px 10px 34px;background:rgba(255,255,255,.9);border-radius:18px;border:1px solid rgba(255,255,255,.35);box-shadow:0 18px 36px rgba(3,10,18,.25);font-size:.98rem;color:#143042;min-height:44px}
       .hero-life__highlights li::before{content:"";position:absolute;left:14px;top:16px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--orange-500),rgba(37,99,235,.42))}
       .life-snapshot{position:relative;display:grid;gap:16px;padding:32px;border-radius:28px;border:1px solid rgba(37,99,235,.16);background:rgba(255,255,255,.96);box-shadow:0 26px 58px rgba(9,51,68,.18);overflow:hidden}
       .life-snapshot::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgba(37,99,235,.22),rgba(255,255,255,0) 60%);opacity:.28;pointer-events:none}
@@ -189,37 +193,10 @@
         </div>
       </section>
 
-      <section class="section" id="participacion">
-        <div class="container stack">
-          <h2>Deducible y coaseguro</h2>
-          <p class="lead">Elige la forma de participaci&oacute;n que mejor funcione para tu presupuesto.</p>
-          <div class="life-coverage-grid">
-            <article class="life-coverage-card">
-              <h3>Participaci&oacute;n fija</h3>
-              <p>Aplicable por padecimiento &uacute;nico.</p>
-              <ul>
-                <li>Participaci&oacute;n: desde $19,500 a $212,000 pesos.</li>
-                <li>Coaseguro: 10%, 15%, 20%, 25% o 30%.</li>
-                <li>Tope de coaseguro: $68,000 / $102,000 / $136,000 / $170,000 / $204,000 pesos.</li>
-              </ul>
-            </article>
-            <article class="life-coverage-card">
-              <h3>Participaci&oacute;n variable</h3>
-              <p>Contribuci&oacute;n anual por padecimiento.</p>
-              <ul>
-                <li>Participaci&oacute;n: desde $7,500 a $212,000 pesos.</li>
-                <li>Coaseguro: 20%.</li>
-                <li>Tope de coaseguro: $85,000 pesos.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="section" id="ventajas">
         <div class="container stack">
           <h2>&iquest;Qu&eacute; ventajas me ofrece?</h2>
-          <p class="lead">Beneficios destacados del plan Personaliza.</p>
+          <p class="lead">Protecci&oacute;n y servicios para enfocarte en tu recuperaci&oacute;n.</p>
           <div class="life-benefits">
             <article class="life-benefit-card">
               <span class="life-benefit-icon" aria-hidden="true">
@@ -228,9 +205,9 @@
                   <path d="M12 7v5l3 2"></path>
                 </svg>
               </span>
-              <h3>Convenio con especialistas</h3>
-              <p>Amplio convenio con m&eacute;dicos especialistas a nivel nacional.</p>
-              <span class="life-benefit-meta">Atenci&oacute;n experta</span>
+              <h3>Pago directo</h3>
+              <p>Gesti&oacute;n de gastos en hospitales y proveedores de la red para simplificar tu atenci&oacute;n.</p>
+              <span class="life-benefit-meta">Sujeto a condiciones</span>
             </article>
             <article class="life-benefit-card">
               <span class="life-benefit-icon" aria-hidden="true">
@@ -241,9 +218,9 @@
                   <path d="M14 7h3"></path>
                 </svg>
               </span>
-              <h3>Hospitales reconocidos</h3>
-              <p>Acceso a hospitales y centros de salud de prestigio en M&eacute;xico.</p>
-              <span class="life-benefit-meta">Cobertura nacional</span>
+              <h3>Reembolso de gastos</h3>
+              <p>Alternativa fuera de red con reembolso seg&uacute;n sumas aseguradas y tabuladores aplicables.</p>
+              <span class="life-benefit-meta">Flexibilidad de atenci&oacute;n</span>
             </article>
             <article class="life-benefit-card">
               <span class="life-benefit-icon" aria-hidden="true">
@@ -253,9 +230,9 @@
                   <path d="M12 16v4"></path>
                 </svg>
               </span>
-              <h3>Flexibilidad en participaci&oacute;n</h3>
-              <p>Elige c&oacute;mo participar&aacute;s en el pago del servicio m&eacute;dico y hospitalario en caso de eventualidad.</p>
-              <span class="life-benefit-meta">Ajusta deducible/coaseguro</span>
+              <h3>Urgencias y hospitalizaci&oacute;n</h3>
+              <p>Atenci&oacute;n por accidente o enfermedad con servicios de diagn&oacute;stico y terapia intensiva.</p>
+              <span class="life-benefit-meta">Red nacional</span>
             </article>
             <article class="life-benefit-card">
               <span class="life-benefit-icon" aria-hidden="true">
@@ -264,9 +241,9 @@
                   <path d="M20 10v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-6"></path>
                 </svg>
               </span>
-              <h3>Plan personalizable</h3>
-              <p>Agrega coberturas adicionales y asistencias seg&uacute;n tu estilo de vida.</p>
-              <span class="life-benefit-meta">Construye tu plan</span>
+              <h3>Asistencias y orientaci&oacute;n</h3>
+              <p>Canales de apoyo y orientaci&oacute;n m&eacute;dica telef&oacute;nica para acompa&ntilde;arte cuando lo necesites.</p>
+              <span class="life-benefit-meta">24/7</span>
             </article>
             <article class="life-benefit-card">
               <span class="life-benefit-icon" aria-hidden="true">
@@ -274,9 +251,23 @@
                   <path d="M12 5c-1.657 0-3 1.343-3 3 0 1.08.567 2.027 1.418 2.563A4.998 4.998 0 0 0 7 15v3h10v-3a4.998 4.998 0 0 0-3.418-4.437A2.996 2.996 0 0 0 15 8c0-1.657-1.343-3-3-3z"></path>
                 </svg>
               </span>
-              <h3>Participaci&oacute;n deducible de impuestos</h3>
-              <p>El pago de tu seguro de gastos m&eacute;dicos mayores puede ser deducible en tu declaraci&oacute;n.</p>
-              <span class="life-benefit-meta">Beneficio fiscal</span>
+              <h3>Red de especialidades</h3>
+              <p>Acceso a diferentes especialidades y centros de diagn&oacute;stico en la red del plan.</p>
+              <span class="life-benefit-meta">Prestadores participantes</span>
+            </article>
+            <article class="life-benefit-card">
+              <span class="life-benefit-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 19h6"></path>
+                  <path d="M4 15h10"></path>
+                  <path d="M2 11h14"></path>
+                  <path d="M4 7h10"></path>
+                  <path d="M6 3h6"></path>
+                </svg>
+              </span>
+              <h3>Opciones para familias</h3>
+              <p>Flexibilidad para incorporar a tus dependientes seg&uacute;n las reglas del producto.</p>
+              <span class="life-benefit-meta">Sujeto a requisitos</span>
             </article>
           </div>
         </div>
@@ -314,48 +305,105 @@
       <section class="section section-alt" id="coberturas">
         <div class="container stack">
           <h2>&iquest;Qu&eacute; cubre?</h2>
-          <p class="lead">Los gastos para tu atenci&oacute;n m&eacute;dica como honorarios por consultas, tratamientos m&eacute;dicos o quir&uacute;rgicos, sala de operaciones, recuperaci&oacute;n y curaciones; an&aacute;lisis de laboratorio, medicamentos y m&aacute;s.</p>
-          <p>Adem&aacute;s, cuentas con:</p>
-          <ul class="bullet-list">
-            <li>Membres&iacute;a M&eacute;dica M&oacute;vil con orientaci&oacute;n telef&oacute;nica y por videollamada 24/7.</li>
-            <li>Ambulancia y m&eacute;dico a domicilio a costo preferencial.</li>
-            <li>Atenci&oacute;n psicol&oacute;gica mediante 2 videollamadas mensuales.</li>
-            <li>Membres&iacute;a dental con limpiezas anuales gratis y descuentos en otros tratamientos.</li>
-            <li>Asistencia en viajes por emergencias fuera de tu residencia: apoyo en hospedaje por convalecencia, traslados hospitalarios, gesti&oacute;n de compras o reservaciones, asesor&iacute;a en caso de p&eacute;rdida de documentos y m&aacute;s.</li>
-          </ul>
+          <p class="lead">Coberturas clave del Plan Decide, con opciones seg&uacute;n condiciones contratadas.</p>
+          <div class="life-coverage-grid">
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l7 4v6c0 5-4 7-7 8-3-1-7-3-7-8V7z"></path>
+                </svg>
+              </span>
+              <h3>Hospitalizaci&oacute;n y cirug&iacute;a</h3>
+              <p>Gastos hospitalarios, quirofano y honorarios m&eacute;dicos por accidente o enfermedad.</p>
+              <span class="life-coverage-tag">Incluida</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12l5 5L20 7"></path>
+                </svg>
+              </span>
+              <h3>Estudios y diagn&oacute;stico</h3>
+              <p>Laboratorio, imagenolog&iacute;a y terapias requeridas durante la atenci&oacute;n m&eacute;dica.</p>
+              <span class="life-coverage-tag">Incluida</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12h16"></path>
+                  <path d="M12 5L5 12l7 7"></path>
+                </svg>
+              </span>
+              <h3>Medicamentos durante evento</h3>
+              <p>Medicaci&oacute;n prescrita como parte de la atenci&oacute;n cubierta.</p>
+              <span class="life-coverage-tag">Incluida</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 6v6l4 2"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+              </span>
+              <h3>Urgencias</h3>
+              <p>Atenci&oacute;n por emergencia m&eacute;dica con alternativas en red y reembolso.</p>
+              <span class="life-coverage-tag">Incluida</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9l6-6 6 6"></path>
+                  <path d="M6 15l6 6 6-6"></path>
+                </svg>
+              </span>
+              <h3>Maternidad</h3>
+              <p>Cobertura opcional seg&uacute;n el plan y requisitos del producto.</p>
+              <span class="life-coverage-tag life-coverage-tag--optional">Opcional</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 9l6 6"></path>
+                  <path d="M15 9l-6 6"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+              </span>
+              <h3>Traslados y ambulancia</h3>
+              <p>Servicios de traslado m&eacute;dico de acuerdo con las condiciones contratadas.</p>
+              <span class="life-coverage-tag life-coverage-tag--optional">Opcional</span>
+            </article>
+            <article class="life-coverage-card">
+              <span class="life-coverage-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21c0-4-3-7-8-7s-8 3-8 7"></path>
+                  <circle cx="12" cy="9" r="4"></circle>
+                </svg>
+              </span>
+              <h3>Cobertura Mujer</h3>
+              <p>Respaldo econ&oacute;mico ante padecimientos del g&eacute;nero, enfermedades graves y complicaciones de embarazo o reci&eacute;n nacido.</p>
+              <span class="life-coverage-tag life-coverage-tag--optional">Opcional</span>
+            </article>
+          </div>
+          <p class="life-note">Para conocer condiciones particulares, requisitos de suscripci&oacute;n y costos detallados, consulta a tu asesor INVESTRA.</p>
         </div>
       </section>
 
       <section class="section life-faq" id="faq">
         <div class="container stack">
-          <h2>Requisitos, restricciones y recomendaciones</h2>
-          <p class="lead">Información clave para contratar y aprovechar tu seguro.</p>
+          <h2>Preguntas frecuentes</h2>
+          <p class="lead">Respuestas r&aacute;pidas para tomar una mejor decisi&oacute;n.</p>
           <div class="stack" style="display:grid;gap:18px">
-            <details open>
-              <summary>Requisitos de contratación</summary>
-              <p>Para adquirir el Seguro Médico GNP Personaliza es necesario:</p>
-              <ul>
-                <li>Radicar en la República Mexicana.</li>
-                <li>Contactar a un Agente GNP, quien dará atención y seguimiento.</li>
-                <li>Llenar la solicitud de seguro para cada asegurado y, en su caso, cuestionarios adicionales para evaluar ocupación o deporte de mayor riesgo.</li>
-              </ul>
+            <details>
+              <summary>&iquest;C&oacute;mo elijo deducible y coaseguro?</summary>
+              <p>Tu asesor puede simular escenarios para equilibrar el costo anual con tu protecci&oacute;n deseada.</p>
             </details>
             <details>
-              <summary>Restricciones de contratación</summary>
-              <p>Los límites de edad para contratar este seguro son de 0 a 70 años. En opciones sin deducible anual la edad máxima de aceptación es 64 años; para personas entre 65 y 70 años la contratación está sujeta a estudios médicos y participación anual en el gasto.</p>
+              <summary>&iquest;Puedo atenderme fuera de la red?</summary>
+              <p>S&iacute;, mediante reembolso sujeto a los tabuladores y condiciones del plan.</p>
             </details>
             <details>
-              <summary>Recomendaciones sobre tu seguro</summary>
-              <ul>
-                <li><strong>Proporcionar</strong> la información requerida para valorar la contratación.</li>
-                <li><strong>Informar</strong> a tu agente GNP antes o hasta 30 días después de emitida la póliza si deseas eliminar periodos de espera.</li>
-                <li><strong>Leer</strong> las condiciones generales para conocer sumas aseguradas, deducible, coaseguro, periodos de espera y exclusiones.</li>
-                <li><strong>Llevar</strong> siempre tu tarjeta Seguro Médico GNP para identificarte y acceder a descuentos.</li>
-                <li><strong>Programar</strong> eventos médicos para evitar desembolsos (cirugías, medicamentos, rehabilitación, enfermería).</li>
-                <li><strong>Identificar</strong> los hospitales y médicos a los que tienes acceso.</li>
-                <li><strong>Realizar</strong> el pago de la prima puntualmente.</li>
-                <li><strong>Comunicar</strong> a tus beneficiarios la existencia y ubicación física de la póliza y los cambios efectuados.</li>
-              </ul>
+              <summary>&iquest;Qu&eacute; necesito para usar pago directo?</summary>
+              <p>Acudir a prestadores participantes y cumplir los requisitos establecidos por el plan para autorizaci&oacute;n.</p>
             </details>
           </div>
         </div>
@@ -379,4 +427,7 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+
+
 
